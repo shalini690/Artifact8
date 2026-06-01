@@ -19,7 +19,7 @@ From the repository root, install the project's dependencies:
 npm install
 ```
 
-This installs [Express](https://www.npmjs.com/package/express) — the sole production dependency — into `node_modules/` and resolves the exact, locked dependency tree recorded in `package-lock.json`.
+This installs [Express](https://expressjs.com/) — the sole production dependency — into `node_modules/` and resolves the exact, locked dependency tree recorded in `package-lock.json`.
 
 ## Running the server
 

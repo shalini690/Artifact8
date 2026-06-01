@@ -36,6 +36,16 @@ const express = require('express');
 // replacing any hand-written `req.url` branching of a native `http` handler.
 const app = express();
 
+// Enable case-sensitive routing so that paths differing only in letter case are
+// treated as distinct routes. Express's default routing is case-insensitive,
+// which would otherwise match requests such as `/GOOD-EVENING` or `/Good-Evening`
+// to the `/good-evening` handler; with this setting enabled those case variants
+// instead fall through to Express's default `404 Not Found`. This is configured
+// before any route is declared so the (lazily-initialized) router adopts it, and
+// it upholds the contract that only the exact declared paths (`/` and
+// `/good-evening`) are served while every other path yields a 404.
+app.set('case sensitive routing', true);
+
 // Resolve the listening port from externalized configuration. Defaults to the
 // Express convention of 3000 and is overridable via the PORT environment
 // variable (e.g., `PORT=8080 node server.js`).
